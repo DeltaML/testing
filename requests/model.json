@@ -1,6 +1,7 @@
 {
   "model_type": "LINEAR_REGRESSION",
   "user_id": 1,
+  "name": "Testing model",
   "data_requirements": {
     "features": {
       "list": [
