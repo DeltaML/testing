@@ -1,3 +1,4 @@
+import uuid
 import requests
 from web3 import Web3
 
@@ -15,7 +16,7 @@ DATA_OWNER_PORTS = ['5000',
 def build_new_user_data(address):
 	return {
 		'name': 'User {}'.format(address),
-		'email': '{}@deltaml.com'.format(address),
+		'email': '{}@deltaml.com'.format(str(uuid.uuid1())),
 		'token': '1234567890'
 	}
 
