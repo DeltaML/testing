@@ -9,7 +9,9 @@ DATA_OWNER_PORTS = {'5000':"datasets/file.csv",
 
 files = {'file': ('report.csv', 'some,data,to,send\nanother,row,to,send\n')}
 
-
+"""
+Falta testear este script
+"""
 if __name__ == '__main__':
 	for do_port, file in DATA_OWNER_PORTS.items():
 		url = "http://localhost:{}/datasets".format(do_port)
