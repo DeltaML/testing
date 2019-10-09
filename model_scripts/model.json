@@ -2,6 +2,12 @@
   "model_type": "LINEAR_REGRESSION",
   "user_id": 1,
   "name": "Testing model",
+  "payments_requirements": {
+      "pay_for_model": {
+        "unit": "ETH",
+        "value": 5
+      }
+  },
   "data_requirements": {
     "features": {
       "list": [
