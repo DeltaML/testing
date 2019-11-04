@@ -1,10 +1,10 @@
 {
   "model_type": "LINEAR_REGRESSION",
-  "user_id": 22,
+  "user_id": 1,
   "name": "Testing model",
   "payments_requirements": {
       "pay_for_model": {
-        "unit": "wei",
+        "unit": "ether",
         "value": 5
       }
   },
