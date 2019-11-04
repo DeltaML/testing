@@ -1,10 +1,8 @@
 import uuid
 import requests
 from web3 import Web3
-
+#
 ETH_URL = "http://127.0.0.1:8545"
-CONTRACT_ADDRESS = '0x3ef1CA5C88Aa04234482d4EEBb0b9D3808182eA8'
-FEDERATED_AGGREGATOR_ADDRESS = "0x1b3940e40A203C32bC5850039E41F22041087D29"
 
 DATA_OWNER_PORTS = ['5000',
                     '5001',
@@ -13,12 +11,14 @@ DATA_OWNER_PORTS = ['5000',
                     '5004',
                     ]
 
+
 def build_new_user_data(address):
     return {
         'name': 'User {}'.format(address),
         'email': '{}@deltaml.com'.format(str(uuid.uuid1())),
         'token': '1234567890'
     }
+
 
 def build_register_user_data(address):
     return {
@@ -62,11 +62,22 @@ def create_new_model_buyer(account):
     print(register_response.json())
     print("Finish Model buyer creation")
 
+
+def set_fa_account_address(avaiables_accounts):
+    print("Init update FA account address")
+    address_url = "http://localhost:8080/federated-aggregator"
+    account = avaiables_accounts.pop()
+    print(address_url, account)
+    register_response = requests.patch(address_url, json=build_register_user_data(account))
+    register_response.raise_for_status()
+    print(register_response.json())
+    print("Finish update FA account address")
+    return account
+
+
 if __name__ == '__main__':
     w3 = Web3(Web3.HTTPProvider(ETH_URL)).eth
-    print(w3.accounts)
-    available_accounts = [account for account in w3.accounts if account != FEDERATED_AGGREGATOR_ADDRESS]
+    fa_account = set_fa_account_address(w3.accounts)
+    available_accounts = [account for account in w3.accounts if account != fa_account]
     create_data_owners(available_accounts)
-    mb_account = available_accounts.pop()
-    create_new_model_buyer(mb_account)
 

@@ -1,6 +1,6 @@
 {
   "model_type": "LINEAR_REGRESSION",
-  "user_id": 19,
+  "user_id": 22,
   "name": "Testing model",
   "payments_requirements": {
       "pay_for_model": {
